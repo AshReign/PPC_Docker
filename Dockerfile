@@ -3,12 +3,17 @@ FROM python:3.10-slim
 # Install git
 RUN apt-get update && apt-get install -y git
 
-# Copy everything into the container
-COPY . /app
+# Set working directory
 WORKDIR /app
 
-# Ensure shell scripts are executable
+# Copy files individually to avoid permission problems
+COPY analyze_vowels.py .
+COPY entrypoint.sh .
+COPY update_readme.sh .
+COPY data.txt .
+COPY README.md .
+
+# Make shell scripts executable
 RUN chmod +x entrypoint.sh update_readme.sh
 
-# Set entrypoint
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
