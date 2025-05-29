@@ -1,0 +1,25 @@
+name: Vowel Analysis
+
+on:
+  push:
+    paths:
+      - 'data.txt'
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Run custom Docker action
+        uses: ./
+
+      - name: Commit and push README update
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add README.md
+          git commit -m "Update README with vowel frequency"
+          git push
