@@ -16,4 +16,4 @@ COPY README.md .
 # Make shell scripts executable
 RUN chmod +x entrypoint.sh update_readme.sh
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["sh", "./entrypoint.sh"]
