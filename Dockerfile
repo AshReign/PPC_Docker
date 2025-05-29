@@ -10,4 +10,4 @@ WORKDIR /app
 
 RUN chmod +x entrypoint.sh update_readme.sh
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
